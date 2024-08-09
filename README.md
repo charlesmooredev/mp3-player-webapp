@@ -2,7 +2,7 @@
 
 This project is a custom music/mp3 player.
 
-[Live DEMO](https://call-of-duty-xi.vercel.app/)
+[Live DEMO](https://mp3-player-webapp.vercel.app/)
 
 # Frontend Tech Stack
 
