@@ -21,10 +21,13 @@ export function MusicPlayerPlaybackBar() {
   const musicVolume = useSelector(selectMusicVolume);
 
   const musicRef = useRef<HTMLAudioElement | null>(null);
+  const previousMusicSrc = useRef<string | null>(null); // Keep track of the previous music src
 
   const changeMusicTimeFn = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    musicRef.current!.currentTime = Number(e.target.value);
-    setCurrentTime(Number(e.target.value));
+    if (musicRef.current) {
+      musicRef.current!.currentTime = Number(e.target.value);
+      setCurrentTime(Number(e.target.value));
+    }
   }, []);
 
   useEffect(() => {
@@ -62,26 +65,19 @@ export function MusicPlayerPlaybackBar() {
   useEffect(() => {
     const audioElement = musicRef.current;
 
-    const playAudio = () => {
-      if (audioElement) {
-        audioElement.play().then();
-      }
-    };
-
     if (audioElement) {
-      audioElement.pause();
-      audioElement.load();
+      // Only load the audio if the source has changed
+      if (currentMusic?.src !== previousMusicSrc.current) {
+        previousMusicSrc.current = currentMusic?.src || null;
+        audioElement.load();
+      }
 
       if (currentMusicStatus === MusicStatus.Playing) {
-        audioElement.addEventListener('canplay', playAudio, { once: true });
+        audioElement.play().then();
+      } else if (currentMusicStatus === MusicStatus.Paused) {
+        audioElement.pause();
       }
     }
-
-    return () => {
-      if (audioElement) {
-        audioElement.removeEventListener('canplay', playAudio);
-      }
-    };
   }, [currentMusic, currentMusicStatus]);
 
   return (
@@ -90,7 +86,7 @@ export function MusicPlayerPlaybackBar() {
       <div className="w-[70px] text-right">{useFormatTime(currentTime)}</div>
       <input
         type="range"
-        className="slider w-[calc(100%-140px)] appearance-none bg-transparent"
+        className="slider w-[calc(100%-140px)] appearance-none bg-transparent outline-0"
         min={0}
         max={duration}
         value={currentTime}
