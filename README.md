@@ -1,6 +1,6 @@
-# Call of Development
+# Custom MP3 Player
 
-The project is a creation of the old school feeling of Call of Duty menus.
+This project is a custom music/mp3 player.
 
 [Live DEMO](https://call-of-duty-xi.vercel.app/)
 
