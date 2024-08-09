@@ -13,7 +13,7 @@ export function MusicPlayerVolume() {
 
   const changeVolumeFn = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      dispatch(musicSlice.actions.updateMusicVolume({ volume: Number(e.target.value / 100) }));
+      dispatch(musicSlice.actions.updateMusicVolume({ volume: Number(e.target.value) / 100 }));
     },
     [dispatch],
   );
@@ -35,7 +35,7 @@ export function MusicPlayerVolume() {
           />
         </div>
       )}
-      <VolumeUp size={35} onClick={() => setOpen(!open)} className="cursor-pointer" />
+      <VolumeUp size={35} onClick={() => setOpen(!open)} className="hidden cursor-pointer lg:block" />
     </div>
   );
 }
