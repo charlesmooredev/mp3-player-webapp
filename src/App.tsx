@@ -8,8 +8,8 @@ function App() {
     <>
       <AppWrapper>
         <MusicPlaylist />
+        <MusicPlayer />
       </AppWrapper>
-      <MusicPlayer />
     </>
   );
 }
