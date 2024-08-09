@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
+import { RefObject, useEffect } from 'react';
 
-export const useOutsideClickFN = (ref, clickFn) => {
+export const useOutsideClickFN = (ref: RefObject<HTMLElement>, clickFn: (event: MouseEvent | TouchEvent) => void) => {
   useEffect(() => {
-    const listener = event => {
-      if (ref.current && !ref.current.contains(event.target)) {
+    const listener = (event: MouseEvent | TouchEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
         clickFn(event);
       }
     };

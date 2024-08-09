@@ -23,8 +23,8 @@ export function MusicPlayerPlaybackBar() {
   const musicRef = useRef<HTMLAudioElement | null>(null);
 
   const changeMusicTimeFn = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    musicRef.current!.currentTime = e.target.value as number;
-    setCurrentTime(e.target.value as number);
+    musicRef.current!.currentTime = Number(e.target.value);
+    setCurrentTime(Number(e.target.value));
   }, []);
 
   useEffect(() => {
