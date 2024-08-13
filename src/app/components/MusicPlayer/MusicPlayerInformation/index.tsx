@@ -7,8 +7,9 @@ export function MusicPlayerInformation() {
   return (
     <div className="flex w-full flex-col space-y-1 text-center lg:w-auto lg:text-left">
       <div className="truncate text-[1.25rem]">{currentMusic.title}</div>
-      <div className="text-[1.15rem] text-gray-200 lg:ml-2">{currentMusic.artist}</div>
-      {currentMusic.album !== null && <div className="text-[1.05rem]">{currentMusic.album}</div>}
+      <div className="flex items-center justify-center space-x-3 text-[1.15rem] text-gray-200 lg:ml-2 lg:justify-start">
+        <div>{currentMusic.artist}</div>
+      </div>
     </div>
   );
 }

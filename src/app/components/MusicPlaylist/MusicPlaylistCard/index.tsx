@@ -25,10 +25,10 @@ export function MusicPlaylistCard({ data }: Props) {
         <img
           src={`/assets/images/${data.image}`}
           alt={data.title}
-          className="aspect-square w-[30px] rounded-sm object-cover"
+          className="aspect-square w-[40px] rounded-sm object-cover"
         />
       </div>
-      <div>{data.title}</div>
+      <div className="w-[calc(100%-40px)] truncate lg:w-auto">{data.title}</div>
       <div className="hidden hover:text-purple-300 lg:block">{data.artist}</div>
     </div>
   );

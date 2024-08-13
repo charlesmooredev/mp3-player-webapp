@@ -15,6 +15,13 @@ export const musicPlayerArray = [
     src: 'as_sick_as_the_secrets_within.mp3',
   },
   {
+    title: 'Woke Up This Morning',
+    image: 'sopranos.png',
+    album: 'Exile on Coldharbour Lane',
+    artist: 'Alabama 3',
+    src: 'sopranos_theme_song.mp3',
+  },
+  {
     title: 'Overdue',
     image: 'metro_boomin_overdue.jpg',
     album: null,
